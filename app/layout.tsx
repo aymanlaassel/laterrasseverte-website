@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Pinyon_Script, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { CartProvider } from "@/lib/cart";
+import { Nav } from "@/components/Nav";
+import { CartDrawer } from "@/components/CartDrawer";
 
 const garamond = EB_Garamond({
   subsets: ["latin"],
@@ -55,7 +58,13 @@ export default function RootLayout({
       lang="fr"
       className={`${garamond.variable} ${pinyon.variable} ${mono.variable}`}
     >
-      <body className="relative">{children}</body>
+      <body className="relative">
+        <CartProvider>
+          <Nav />
+          <div className="pt-20 sm:pt-24">{children}</div>
+          <CartDrawer />
+        </CartProvider>
+      </body>
     </html>
   );
 }

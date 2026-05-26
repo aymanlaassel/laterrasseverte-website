@@ -427,3 +427,48 @@ export const specials = [
   { day: "Mercredi", dish: "Rfissa" },
   { day: "Vendredi", dish: "Couscous (poulet ou viande)" },
 ];
+
+export type FlatItem = MenuItem & {
+  id: string;
+  sectionId: string;
+  sectionTitle: string;
+  groupHeading?: string;
+};
+
+function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function getAllItems(): FlatItem[] {
+  return menu.flatMap((section) =>
+    section.groups.flatMap((group) =>
+      group.items.map((item) => ({
+        ...item,
+        id: `${section.id}--${slugify(item.name)}${group.heading ? "--" + slugify(group.heading) : ""}`,
+        sectionId: section.id,
+        sectionTitle: section.title,
+        groupHeading: group.heading,
+      }))
+    )
+  );
+}
+
+export const itemById: Map<string, FlatItem> = new Map(
+  getAllItems().map((i) => [i.id, i])
+);
+
+export function priceToNumber(p: MenuItem["price"]): number {
+  return typeof p === "number" ? p : p[0];
+}
+
+export function formatPrice(p: MenuItem["price"]): string {
+  return typeof p === "number" ? `${p} DH` : `${p[0]} / ${p[1]} DH`;
+}
+
+export const glovoUrl = "https://glovoapp.com/ma/fr/temara/";
+

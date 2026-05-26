@@ -214,6 +214,14 @@
   background: rgba(31, 84, 48, 0.04);
 }
 
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* ─── responsive type scale that respects 3x+ jumps ─── */
 .display-script {
   font-family: var(--font-script);
