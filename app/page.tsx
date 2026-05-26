@@ -44,7 +44,7 @@ function Cover() {
       <h1
         className="ink-in delay-2 display-script"
         style={{
-          fontSize: "clamp(4.5rem, 17vw, 16rem)",
+          fontSize: "clamp(2.75rem, 9vw, 7.5rem)",
         }}
       >
         La Terrasse Verte
