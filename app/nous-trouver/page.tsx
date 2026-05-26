@@ -30,7 +30,10 @@ export default function NousTrouverPage() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Carte — La Terrasse Verte, Temara"
-            style={{ filter: "saturate(0.85) contrast(0.92) sepia(0.08)" }}
+            style={{
+              filter:
+                "invert(0.92) hue-rotate(180deg) saturate(0.7) brightness(0.96) contrast(0.88)",
+            }}
           />
           <a
             href={mapLink}

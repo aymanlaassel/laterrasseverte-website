@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #f6efd9;
-  --color-paper: #faf4e0;
-  --color-paper-soft: #f1e9cf;
-  --color-ink: #1a1611;
-  --color-ink-soft: #4a4030;
-  --color-moss: #1f5430;
-  --color-moss-deep: #143820;
-  --color-moss-bright: #2d7a47;
-  --color-rule: #3f6a4a;
+  /* "cream" / "ink" / "paper" semantic names retained — values flipped for dark mode */
+  --color-cream: #0a0a0a;        /* page background — warm near-black */
+  --color-paper: #141413;        /* subtle panel lift */
+  --color-paper-soft: #1d1d1a;   /* raised panel */
+  --color-ink: #f0e9d4;          /* primary text — warm cream off-white */
+  --color-ink-soft: #9d9685;     /* dimmer text */
+
+  /* greens lifted from the IG logo: leafy kelly green, brighter on hover */
+  --color-moss: #a4d34b;         /* accent / hover */
+  --color-moss-deep: #8fc83e;    /* logo green — used for headings and primary buttons */
+  --color-moss-bright: #c0e766;  /* highlight */
+  --color-rule: #3a4a25;         /* dim green for hairline rules */
 
   --font-script: var(--font-pinyon), "Pinyon Script", cursive;
   --font-serif: var(--font-garamond), "EB Garamond", "Garamond", "Cormorant Garamond", serif;
@@ -29,23 +32,24 @@
   body {
     font-family: var(--font-serif);
     background:
-      radial-gradient(ellipse at top, rgba(31, 84, 48, 0.04), transparent 60%),
-      radial-gradient(ellipse at bottom right, rgba(31, 84, 48, 0.03), transparent 50%),
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(143, 200, 62, 0.08), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(164, 211, 75, 0.05), transparent 60%),
+      radial-gradient(ellipse 50% 30% at 0% 60%, rgba(143, 200, 62, 0.03), transparent 70%),
       var(--color-cream);
     background-attachment: fixed;
     position: relative;
   }
 
-  /* paper grain overlay */
+  /* film grain — light noise on black for warmth */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.35;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.10  0 0 0 0 0.06  0 0 0 0.12 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.22;
+    mix-blend-mode: screen;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.94  0 0 0 0 0.91  0 0 0 0 0.82  0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 
   ::selection {

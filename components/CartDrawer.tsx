@@ -25,9 +25,9 @@ export function CartDrawer() {
 
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop — explicit black so it works regardless of theme inversion */}
       <div
-        className={`fixed inset-0 z-50 bg-[var(--color-ink)]/40 backdrop-blur-sm transition-opacity duration-400 ${
+        className={`fixed inset-0 z-50 bg-black/65 backdrop-blur-sm transition-opacity duration-400 ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={closeDrawer}
@@ -36,7 +36,7 @@ export function CartDrawer() {
 
       {/* Drawer */}
       <aside
-        className={`fixed top-0 right-0 z-50 h-[100dvh] w-full max-w-[440px] bg-[var(--color-cream)] shadow-2xl border-l border-[var(--color-moss)]/15 transform transition-transform duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)] flex flex-col ${
+        className={`fixed top-0 right-0 z-50 h-[100dvh] w-full max-w-[440px] bg-[var(--color-paper)] shadow-[0_0_60px_-10px_rgba(0,0,0,0.6)] border-l border-[var(--color-moss)]/20 transform transition-transform duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)] flex flex-col ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
